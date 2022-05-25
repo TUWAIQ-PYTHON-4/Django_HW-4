@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+<head>
+    <meta charset="UTF-8">
+    {% block title %}
+      <title>Shop</title>
+    {% endblock %}
+
+</head>
+
+<body>
+
+{% block content %}
+<div class="row row-cols-1 row-cols-md-3 g-4" style="grid-gap:0px">
+  {% for item in context_product %}
+  <div class="col">
+    <div class="card text-bg-dark mb-3 h-100" style="width: 19rem;">
+      <img src="{{ item.product_img.url}}" class="card-img-top h-100" alt="..." >
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+          <p>{{item.description}}</p>
+        <p class="card-text">Seller Contact info: {{item.seller.email}}  </p>
+
+      </div>
+    </div>
+  </div>
+
+  {% endfor%}
+</div>
+{% endblock %}
+
+</body>
