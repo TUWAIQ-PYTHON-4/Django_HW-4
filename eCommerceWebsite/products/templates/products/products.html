@@ -1,0 +1,21 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  {% for item in product %}
+  <div class="col">
+    <div class="card h-100">
+      <img src="{{ item.photo.url }}" width="200" height="200" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.description}}</p>
+        <h5 class="card-title">{{item.price}}</h5>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
