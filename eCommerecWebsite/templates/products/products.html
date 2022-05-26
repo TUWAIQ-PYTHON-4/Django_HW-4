@@ -1,0 +1,41 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+<div class="row row-cols-1 row-cols-md-2 g-3">
+  {% if products %}
+  {% for product in products%}
+  <div class="col">
+    <div class="card">
+      <img src="{{product.photo.url}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{product.description}}</p>
+         <h5 class="card-title" align="right">{{ product.price }} SR</h5>
+      </div>
+    </div>
+     </div>
+    {% endfor %}
+    {% else %}
+    <p> No product available </p>
+    {% endif %}
+</div>
+  <nav aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+</div>
+{% endblock %}
