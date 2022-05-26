@@ -1,0 +1,65 @@
+{% extends 'products/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% if products %}
+    {% for product in products %}
+  <div class="col">
+    <div class="card">
+      <img src="{{ products.photos.url }}" class="card-img-top" alt="...">
+      <div class="card-body">
+         <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <h5 class="card-title" align="right">{{ product.price }} SR </h5>
+  </div>
+
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No Products </p>
+    {% endif %}
+</div>
+  <nav aria-label="...">
+    {% if products.has_other_pages  %}
+  <ul class="pagination">
+    {% if products.has_previous %}
+     <li class="page-item">
+      <a href="?page{{products.products_page_number}}" class="page-link">Previous</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link">Previous</a>
+    </li>
+    {% endif %}
+    {% for i in products.paginator.page_range %}
+    {% if products.number == i %}
+    <li class="page-item active">
+      <a class="page-link" href="{{i}}">1</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a href="?page={{i}}" class="page-link" href="{{i}}">2</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% if products.has_other_pages  %}
+  <ul class="pagination">
+    {% if products.has_next %}
+     <li class="page-item">
+      <a href="?page{{products.next_page_number}}" class="page-link">next</a>
+    </li>
+    {% else %}
+    <li class="page-item disabled">
+      <a class="page-link">next</a>
+    </li>
+    {% endif %}
+
+  </ul>
+    {% endif %}
+    {% endif %}
+
+</nav>
+</div>
+{% endblock %}
