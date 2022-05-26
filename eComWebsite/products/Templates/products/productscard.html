@@ -1,40 +1,20 @@
 <div class="container">
-    <div class="row row-cols-1 row-cols-md-2">
-        <div class="col mb-4">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      {% if products %}
+      {% for product in products %}
+        <div class="col">
           <div class="card">
-            <img src="static/images/img1.png" class="card-img-top" alt="...">
+            <img src="{{ product.photo.url }}" class="card-img-top" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Iphone Pro</h5>
-              <p class="card-text"></p>
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">{{ product.description}}</p>
+              <h5 class="card-title">{{ product.price }} $ </h5>
             </div>
           </div>
         </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="static/images/img3.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Apple Watch</h5>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="static/images/img2.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Macbook Pro</h5>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
-        <div class="col mb-4">
-          <div class="card">
-            <img src="static/images/img4.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Airpods</h5>
-              <p class="card-text"></p>
-            </div>
-          </div>
-        </div>
+          {% endfor %}
+          {% else %}
+          <p>No Available Products</p>
+          {% endif %}
       </div>
 </div>
